@@ -38,9 +38,18 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.update_attributes!(
-  email: 'mharr171.z@gmail.com',
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@bloccit.com',
+  password: 'asdf123',
+  role:     'admin'
+)
+
+# Create a member
+member = User.create!(
+  name:     'Member User',
+  email:    'member@bloccit.com',
   password: 'asdf123'
 )
 
