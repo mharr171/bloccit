@@ -1,5 +1,22 @@
 require 'random_data'
 
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@bloccit.com',
+  password: 'asdf123',
+  role:     'admin'
+)
+print '.'
+
+# Create a member
+member = User.create!(
+  name:     'Member User',
+  email:    'member@bloccit.com',
+  password: 'asdf123'
+)
+print '.'
+
 # Create Users
 5.times do
   User.create!(
@@ -7,8 +24,10 @@ require 'random_data'
     email:    RandomData.random_email,
     password: RandomData.random_sentence
   )
+  print '.'
 end
 users = User.all
+puts "\n#{User.count} users created"
 
 # Create Topics
 15.times do
@@ -16,8 +35,10 @@ users = User.all
     name:         RandomData.random_sentence,
     description:  RandomData.random_paragraph
   )
+  print '.'
 end
 topics = Topic.all
+puts "\n#{Topic.count} topics created"
 
 # Create Posts
 50.times do
@@ -27,34 +48,21 @@ topics = Topic.all
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph
   )
+  print '.'
 end
 posts = Post.all
+puts "\n#{Post.count} posts created"
 
 # Create Comments
 100.times do
   Comment.create!(
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )
+  print '.'
 end
-
-# Create an admin user
-admin = User.create!(
-  name:     'Admin User',
-  email:    'admin@bloccit.com',
-  password: 'asdf123',
-  role:     'admin'
-)
-
-# Create a member
-member = User.create!(
-  name:     'Member User',
-  email:    'member@bloccit.com',
-  password: 'asdf123'
-)
+comments = Comment.all
+puts "\n#{Comment.count} comments created"
 
 puts "Seed finished"
-puts "#{User.count} users created"
-puts "#{Topic.count} topics created"
-puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created"
