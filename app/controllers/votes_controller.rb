@@ -16,9 +16,7 @@ class VotesController < ApplicationController
     @post = Post.find(params[:post_id])
     @vote = @post.votes.where(user_id: current_user.id).first
 
-    if @vote.value == new_value
-       @vote.update_attribute(:value, 0)
-    elsif @vote
+    if @vote
       @vote.update_attribute(:value, new_value)
     else
       @vote = current_user.votes.create(value: new_value, post: @post)
