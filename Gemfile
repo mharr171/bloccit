@@ -19,6 +19,8 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'pry'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   gem 'shoulda'
+  gem 'factory_bot_rails', '~> 4.0'
 end
 
 group :test do
