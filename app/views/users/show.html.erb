@@ -35,9 +35,9 @@
 
 <h2>Favorites</h2>
 <% if has_favorites? %>
-  <%= @user.favorites.each do |favorite| %>
+  <% @user.favorites.each do |favorite| %>
+    <% @favorite_post = Post.find(favorite.post_id)%>
     <div class="favorite">
-      <% @favorite_post = Post.find(favorite.post_id)%>
       <div class="media-left">
         <% avatar_url = @favorite_post.user.avatar_url(36) %>
         <%= link_to (image_tag avatar_url), user_path(@favorite_post.user.id) %>
